@@ -57,8 +57,8 @@ def server_info() -> str:
 @mcp.tool()
 def query_db(sql: str):
     """Run a query against the database."""
-
-    result=execute_db_query(sql)
+    params=[]
+    result=execute_db_query(sql,params)
     return result
 
 if __name__ == "__main__":
