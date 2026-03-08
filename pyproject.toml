@@ -5,7 +5,9 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "dotenv>=0.9.9",
     "fastmcp>=3.0.2",
+    "libsql>=0.1.11",
     "libsql-client>=0.3.1",
     "python-dotenv>=1.2.2",
 ]
