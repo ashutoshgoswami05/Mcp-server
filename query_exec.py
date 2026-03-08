@@ -23,7 +23,6 @@ def execute_db_query(query,params):
             if result_set.rows:
                 result = result_set.rows[0][0]
                 print(result)
-                return result
-            
-            return None
+                return result  
+    return None
     
