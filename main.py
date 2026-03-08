@@ -19,6 +19,7 @@ def get_revenue_summary(start_date : Optional[str] = None ,end_date: Optional[st
         JOIN customers c ON o.customer_id = c.customer_id
         WHERE o.status = 'Completed'
     """
+
     params = []
 
     if start_date:
@@ -54,10 +55,11 @@ def server_info() -> str:
     return json.dumps(info,indent=2)
 
 @mcp.tool()
-def query_db(sql: str) -> str:
-    """Run a query against the mock SQLite database."""
-    # Your sqlite code here
-    return "Result"
+def query_db(sql: str):
+    """Run a query against the database."""
+
+    result=execute_db_query(sql)
+    return result
 
 if __name__ == "__main__":
     mcp.run(transport="http", host="127.0.0.1", port=8000)
