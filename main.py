@@ -2,6 +2,7 @@ from mcp.server.fastmcp import FastMCP
 from typing import Optional
 from query_exec import execute_db_query
 from sqdb import create_mock_db
+import json
 
 
 create_mock_db()
@@ -52,6 +53,7 @@ def server_info() -> str:
         "author": "Ashutosh Goswami"
     }
 
+    return json.dumps(info,indent=2)
 
 @app.tool()
 def query_db(sql: str) -> str:
