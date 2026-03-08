@@ -16,7 +16,7 @@ def get_revenue_summary(start_date : Optional[str] = None ,end_date: Optional[st
     query = """
         SELECT SUM(o.amount)
         FROM orders o
-        JOIN customers c ON o.customer_id = c.id
+        JOIN customers c ON o.customer_id = c.customer_id
         WHERE o.status = 'Completed'
     """
     params = []
@@ -30,13 +30,14 @@ def get_revenue_summary(start_date : Optional[str] = None ,end_date: Optional[st
         params.append(end_date)
 
     if plan:
-        query += " AND c.plan = ?"
+        query += " AND c.plan_type = ?"
         params.append(plan)
 
     result=execute_db_query(query,params)
+    print(result)
     
     return {
-        "total_revenue": result or 0,
+        "total_revenue": result,
         "start_date": start_date,
         "end_date": end_date,
         "plan": plan

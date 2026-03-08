@@ -13,7 +13,6 @@ def execute_db_query(query,params):
         print("trying connection",auth_token,url)
         conn = libsql.connect("imported.db", sync_url=url, auth_token=auth_token)
         result=conn.execute(query,params).fetchall()
-        conn.commit()
         return result
     except Exception as e:
          print("Exception occured ",e)
