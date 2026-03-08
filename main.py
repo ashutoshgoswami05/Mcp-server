@@ -1,4 +1,4 @@
-from mcp.server.fastmcp import FastMCP
+from fastmcp import FastMCP
 from typing import Optional
 from query_exec import execute_db_query
 import json
