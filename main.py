@@ -44,6 +44,14 @@ def get_revenue_summary(start_date : Optional[str] = None ,end_date: Optional[st
         "plan": plan
     }
 
+@app.resource("info://server")
+def server_info() -> str:
+    info={
+        "name": "Getting revenue directly querying the database as chat",
+        "version": "1.0.0",
+        "author": "Ashutosh Goswami"
+    }
+
 
 @app.tool()
 def query_db(sql: str) -> str:
@@ -52,4 +60,4 @@ def query_db(sql: str) -> str:
     return "Result"
 
 if __name__ == "__main__":
-    app.run()
+    app.run(transport="http",host="0.0.0.0", port=8000)
