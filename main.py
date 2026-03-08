@@ -4,10 +4,10 @@ from query_exec import execute_db_query
 import json
 
 
-app=FastMCP(name="Server for Db queries")
+mcp=FastMCP(name="Server for Db queries")
 
 
-@app.tool()
+@mcp.tool()
 def get_revenue_summary(start_date : Optional[str] = None ,end_date: Optional[str] = None ,plan: Optional[str] = None):
     """
     Returns total revenue within optional date range and optional plan filter.
@@ -42,7 +42,7 @@ def get_revenue_summary(start_date : Optional[str] = None ,end_date: Optional[st
         "plan": plan
     }
 
-@app.resource("info://server")
+@mcp.resource("info://server")
 def server_info() -> str:
     info={
         "name": "Getting revenue directly querying the database as chat",
@@ -52,11 +52,11 @@ def server_info() -> str:
 
     return json.dumps(info,indent=2)
 
-@app.tool()
+@mcp.tool()
 def query_db(sql: str) -> str:
     """Run a query against the mock SQLite database."""
     # Your sqlite code here
     return "Result"
 
 if __name__ == "__main__":
-    app.run(transport="http",host="0.0.0.0", port=8000)
+    mcp.run(transport="http", host="127.0.0.1", port=8000)
